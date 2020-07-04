@@ -5,12 +5,12 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  name: string;
-
-  @Column()
+  @Column('varchar', {nullable: true, unique: true})
   email: string;
 
-  @Column()
+  @Column('varchar',{nullable: true})
+  name: string;
+
+  @Column('varchar',{nullable: true})
   password: string;
 }
