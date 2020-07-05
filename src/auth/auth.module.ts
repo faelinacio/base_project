@@ -7,15 +7,14 @@ import {PassportModule} from '@nestjs/passport';
 import {LocalStrategy} from './local.strategy';
 import {AuthController} from './auth.controller';
 import {JwtModule} from '@nestjs/jwt';
-import {jwtOptons} from './constants';
+import {jwtOptions} from './constants';
 import {JwtStrategy} from './jwt.strategy';
-import * as bcrypt from 'bcrypt';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([User]),
     PassportModule,
-    JwtModule.register(jwtOptons),
+    JwtModule.register(jwtOptions),
   ],
   providers: [
     AuthService,
