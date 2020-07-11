@@ -16,7 +16,7 @@ export class UserService {
   async create(user: User): Promise<User> {
     const isEmailAlreadUsed = await this.usersRepository.find({where : {email : user.email}});
 
-    user.password = await bcrypt.hash(user.password, jwtConstants.salt);
+    user.password = await bcrypt.hash(user.password, parseInt(jwtConstants.salt));
 
     if (isEmailAlreadUsed && isEmailAlreadUsed.length > 0) {
       throw new BadRequestException("Email already used")
