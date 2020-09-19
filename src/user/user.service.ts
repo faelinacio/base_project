@@ -25,8 +25,9 @@ export class UserService {
     return this.usersRepository.save(user);
   }
 
-  async findAll(): Promise<User[]> {
-    return this.usersRepository.find();
+  async findAll(pageSize = 10, pageNumber = 1): Promise<{ total: number; users: User[] }> {
+    const [users, total] = await this.usersRepository.findAndCount({select: ["id", "email", "name"],take: pageSize, skip: (pageNumber - 1) * pageSize});
+    return { users, total }
   }
 
   findOneById(id: string): Promise<User> {

@@ -1,10 +1,10 @@
 
-import {Body, Controller, Delete, Get, Param, Post, UseGuards} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Query, UseGuards} from '@nestjs/common';
 import { User } from './user.entity';
 import { UserService } from './user.service';
 import {JwtAuthGuard} from '../auth/jwt-auth.guard';
 
-@Controller('user')
+@Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -15,8 +15,8 @@ export class UserController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  findAll(): Promise<User[]> {
-    return this.userService.findAll();
+  findAll(@Query() { pageSize, pageNumber }) {
+    return this.userService.findAll(pageSize, pageNumber);
   }
 
   @UseGuards(JwtAuthGuard)
