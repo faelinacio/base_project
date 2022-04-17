@@ -36,7 +36,7 @@ export class UserService {
     }
 
     findOneById(id: number): Promise<User> {
-        return this.usersRepository.findOneOrFail({where: {id: id}});
+        return this.usersRepository.findOneOrFail({where: {id}});
     }
 
     findOneByEmail(email: string): Promise<User> {
