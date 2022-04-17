@@ -15,12 +15,12 @@ export const jwtOptions = {
 }
 
 export const dbOptions: TypeOrmModuleOptions = {
-  type: process.env.TYPE as any,
-  host: process.env.HOST,
-  port: Number(process.env.PORT),
-  username: process.env.USERNAME,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
-  autoLoadEntities: process.env.AUTO_LOAD_ENTITIES === 'true',
-  synchronize: process.env.AUTO_LOAD_ENTITIES === 'true',
+  type: process.env.DB_TYPE as any,
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  autoLoadEntities: process.env.DB_AUTO_LOAD_ENTITIES === 'true',
+  synchronize: process.env.DB_AUTO_LOAD_ENTITIES === 'true',
 }
